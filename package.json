@@ -18,6 +18,7 @@
   "homepage": "https://github.com/valeryiaStrom/ATM-module-10-Design-Patterns-in-TA-Frameworks#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "mocha": "^7.2.0"
   },
   "devDependencies": {
