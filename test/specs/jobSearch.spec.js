@@ -12,7 +12,7 @@ describe('jobs search', function() {
     return browser.manage().window().maximize();
   });
 
-  it('should return 9 job offers for Test Engineers from Minsk', async function() {
+  it('should return 8 job offers for Test Engineers from Minsk', async function() {
     const keyword = 'Test';
     const location = 'Minsk';
     const department = 'Software Test Engineering';
