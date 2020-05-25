@@ -1,0 +1,26 @@
+{
+  "name": "atm-module-10-design-patterns-in-ta-frameworks",
+  "version": "1.0.0",
+  "description": "module 10 hometask",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor ./test/config/protractor.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valeryiaStrom/ATM-module-10-Design-Patterns-in-TA-Frameworks.git"
+  },
+  "author": "Valeryia Strom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valeryiaStrom/ATM-module-10-Design-Patterns-in-TA-Frameworks/issues"
+  },
+  "homepage": "https://github.com/valeryiaStrom/ATM-module-10-Design-Patterns-in-TA-Frameworks#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0"
+  },
+  "devDependencies": {
+    "protractor": "^7.0.0"
+  }
+}
