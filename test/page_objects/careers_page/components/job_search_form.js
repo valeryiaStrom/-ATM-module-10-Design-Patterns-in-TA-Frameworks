@@ -17,10 +17,14 @@ class JobSearchForm {
   async selectLocation(location) {
     await this.locationCombobox.click();
     await this.locationCombobox.sendInput(location);
+    const targetLocation = element(by.css(`[id$='location-results'] li[id$='${location}']`));
+    await browser.wait(EC.elementToBeClickable(targetLocation), 5000);
     await this.listOfAvailableLocations.clickElementByText(location);
   }
   async selectDepartment(department) {
     await this.departmentCheckbox.click();
+    const targetDepartment = element(by.css(`.multi-select-dropdown input[data-value='${department}'] + span`));
+    await browser.wait(EC.elementToBeClickable(targetDepartment), 5000);
     await this.listOfAvailableDepartments.clickElementByText(department);
   }
   clickSubmitButton() {
