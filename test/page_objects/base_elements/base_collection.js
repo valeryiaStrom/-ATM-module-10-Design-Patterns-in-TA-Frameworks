@@ -26,22 +26,9 @@ class Collection {
     const arrayOfCollectionTexts = await this.collection.getText();
     return arrayOfCollectionTexts;
   }
-  // async clickElementByText(textToClick) {
-  //   const arrayOfElementTexts = await this.collection.getText();
-  //   //---
-  //   arrayOfElementTexts.map((elementText) => elementText.trim());
-  //   //---
-  //   const elementToClickIndex = arrayOfElementTexts.indexOf(textToClick);
-  //   if (elementToClickIndex === -1) {
-  //       throw new Error(`No element with [${textToClick}] text found!`);
-  //   }
-  //   return this.collection.get(elementToClickIndex).click();
-  // }
   async clickElementByText(textToClick) {
     const arrayOfElementTexts = await this.collection.getText();
-    //---
     const arrayOfTrimmedElementTexts = arrayOfElementTexts.map((elementText) => elementText.trim());
-    //---
     const elementToClickIndex = arrayOfTrimmedElementTexts.indexOf(textToClick);
     if (elementToClickIndex === -1) {
         throw new Error(`No element with [${textToClick}] text found!`);
