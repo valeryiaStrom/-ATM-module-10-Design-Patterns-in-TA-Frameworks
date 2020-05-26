@@ -28,14 +28,4 @@ describe('jobs search', function() {
     expect(searchResultsHeading).to.equal(`WE FOUND ${amountOfSearchResults} JOB OPENINGS RELATED TO "${keyword.toUpperCase()}"`);
     expect(amountOfSearchResults).to.be.equal(8);
   });
-  it('should shrow an error for jobs in Zimbabwe', async function() {
-    const keyword = 'Test';
-    const location = 'Zimbabwe';
-    const department = 'Software Test Engineering';
-  
-    await PageFactory.getPage('Home').open();
-    await PageFactory.getPage('Home').header.clickCareersButton();
-    await PageFactory.getPage('Careers').jobSearchForm.waitForTheFormToBeVisible();
-    return PageFactory.getPage('Careers').jobSearchForm.submitJobSearchForm(keyword, location, department).should.be.rejectedWith(`No element with [${location}] text found!`);
-  });
 });
