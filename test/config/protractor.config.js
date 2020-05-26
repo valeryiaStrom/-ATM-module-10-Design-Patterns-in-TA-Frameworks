@@ -8,13 +8,17 @@ exports.config = {
     maxInstances: yargs.instances || 1,
   },
   seleniumAddress: 'http://localhost:4444/wd/hub/',
-  //directConnect: true,
   framework: 'mocha',
   specs: [
     '../specs/*.js',
   ],
   mochaOpts: {
-    reporter: 'spec',
+    reporter: 'mochawesome',
+    reporterOptions: {
+      overwrite: true,
+      html: true,
+      json: true
+    },
     timeout: 70000
-  }
+  },
 };
