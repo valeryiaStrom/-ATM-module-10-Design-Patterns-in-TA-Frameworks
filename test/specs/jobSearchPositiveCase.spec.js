@@ -5,6 +5,7 @@ const expect = chai.expect;
 chai.should();
 const PageFactory = require('../page_objects/pageFactory');
 const EC = protractor.ExpectedConditions;
+const yargs = require('yargs').argv;
 
 describe('jobs search', function() {
   beforeEach(function() {
@@ -12,11 +13,11 @@ describe('jobs search', function() {
     return browser.manage().window().maximize();
   });
 
-  it('should return 8 job offers for Test Engineers from Minsk', async function() {
-    const keyword = 'Test';
-    const location = 'Minsk';
-    const department = 'Software Test Engineering';
-  
+  const keyword = yargs.keyword || 'Test';
+  const location = yargs.location || 'Minsk';
+  const department = yargs.department || 'Software Test Engineering';
+
+  it(`should return job offers for ${department} positions from ${location}`, async function() {
     await PageFactory.getPage('Home').open();
     await PageFactory.getPage('Home').header.clickCareersButton();
     await PageFactory.getPage('Careers').jobSearchForm.waitForTheFormToBeVisible();
@@ -25,7 +26,11 @@ describe('jobs search', function() {
     await browser.wait(EC.elementToBeClickable(firstSearchResultItem), 10000);
     const amountOfSearchResults = await PageFactory.getPage("Careers").jobSearchResults.countSearchResults();
     const searchResultsHeading = await PageFactory.getPage('Careers').jobSearchResults.getHeadingText();
-    expect(searchResultsHeading).to.equal(`WE FOUND ${amountOfSearchResults} JOB OPENINGS RELATED TO "${keyword.toUpperCase()}"`);
-    expect(amountOfSearchResults).to.be.equal(8);
+    if (amountOfSearchResults > 1) {
+      expect(searchResultsHeading).to.equal(`WE FOUND ${amountOfSearchResults} JOB OPENINGS RELATED TO "${keyword.toUpperCase()}"`);
+    } else {
+      expect(searchResultsHeading).to.equal(`WE FOUND ${amountOfSearchResults} JOB OPENING RELATED TO "${keyword.toUpperCase()}"`);
+    }
+    expect(amountOfSearchResults).to.be.at.least(1);
   });
 });

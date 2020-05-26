@@ -12,11 +12,11 @@ describe('jobs search', function() {
     return browser.manage().window().maximize();
   });
 
+  const keyword = 'Test';
+  const location = 'Zimbabwe';
+  const department = 'Software Test Engineering';
+
   it('should shrow an error for jobs in Zimbabwe', async function() {
-    const keyword = 'Test';
-    const location = 'Zimbabwe';
-    const department = 'Software Test Engineering';
-  
     await PageFactory.getPage('Home').open();
     await PageFactory.getPage('Home').header.clickCareersButton();
     await PageFactory.getPage('Careers').jobSearchForm.waitForTheFormToBeVisible();

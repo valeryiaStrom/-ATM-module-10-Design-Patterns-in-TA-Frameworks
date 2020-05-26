@@ -17,6 +17,8 @@ class JobSearchForm {
   async selectLocation(location) {
     await this.locationCombobox.click();
     await this.locationCombobox.sendInput(location);
+    const targetLocation = element(by.css(`ul[id$='location-results']`));
+    await browser.wait(EC.elementToBeClickable(targetLocation), 5000);
     await this.listOfAvailableLocations.clickElementByText(location);
   }
   async selectDepartment(department) {
